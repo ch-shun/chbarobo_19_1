@@ -221,10 +221,15 @@ void EXTI9_5_IRQHandler(void)
 
 	    GPIOA->BSRR = GPIO_BSRR_BR_3;
 
-		TIM2->CCR1=5000;
-		HAL_Delay(2000);
-		TIM2->CCR1=0;
+            TIM2->CCR1=5000;
 
+	    while(1){
+	    	if((GPIOA->IDR & GPIO_IDR_10 ) == 0){
+	    		break;
+	    	}
+	    }
+
+	    TIM2->CCR1=0;
 	    GPIOB->BSRR = GPIO_BSRR_BR_1;
 	    GPIOB->BSRR = GPIO_BSRR_BR_0;
 
@@ -258,9 +263,15 @@ void EXTI9_5_IRQHandler(void)
 		    GPIOA->BSRR = GPIO_BSRR_BS_4;
 	    }
 
-		TIM2->CCR1=5000;
-		HAL_Delay(2000);
-		TIM2->CCR1=0;
+            TIM2->CCR1=5000;
+
+	    while(1){
+	    	if((GPIOA->IDR & GPIO_IDR_10 ) == 0){
+	    		break;
+	    	}
+	    }
+
+	    TIM2->CCR1=0;
 
 	    GPIOB->BSRR = GPIO_BSRR_BR_1;
 	    GPIOB->BSRR = GPIO_BSRR_BR_0;
@@ -282,9 +293,15 @@ void EXTI9_5_IRQHandler(void)
 
 	    GPIOA->BSRR = GPIO_BSRR_BS_3;
 
-		TIM2->CCR1=5000;
-		HAL_Delay(2000);
-		TIM2->CCR1=0;
+            TIM2->CCR1=5000;
+
+	    while(1){
+	    	if((GPIOA->IDR & GPIO_IDR_10 ) == 0){
+	    		break;
+	    	}
+	    }
+
+	    TIM2->CCR1=0;
 
 	    GPIOB->BSRR = GPIO_BSRR_BR_1;
 	    GPIOB->BSRR = GPIO_BSRR_BR_0;
@@ -316,9 +333,15 @@ void EXTI9_5_IRQHandler(void)
 	    }
 
 
-		TIM2->CCR1=5000;
-		HAL_Delay(2000);
-		TIM2->CCR1=0;
+            TIM2->CCR1=5000;
+
+	    while(1){
+	    	if((GPIOA->IDR & GPIO_IDR_10 ) == 0){
+	    		break;
+	    	}
+	    }
+
+	    TIM2->CCR1=0;
 
 	    GPIOB->BSRR = GPIO_BSRR_BR_1;
 	    GPIOB->BSRR = GPIO_BSRR_BR_0;
@@ -349,9 +372,15 @@ void EXTI9_5_IRQHandler(void)
 		    GPIOA->BSRR = GPIO_BSRR_BS_4;
 	    }
 
-		TIM2->CCR1=5000;
-		HAL_Delay(2000);
-		TIM2->CCR1=0;
+            TIM2->CCR1=5000;
+
+	    while(1){
+	    	if((GPIOA->IDR & GPIO_IDR_10 ) == 0){
+	    		break;
+	    	}
+	    }
+
+	    TIM2->CCR1=0;
 
 
 	    GPIOB->BSRR = GPIO_BSRR_BR_1;
