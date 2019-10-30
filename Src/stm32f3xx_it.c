@@ -264,7 +264,16 @@ void EXTI9_5_IRQHandler(void)
 	    }
 
             TIM2->CCR1=5000;
+	  
+    　　　　for(i=2; i<4; i++){
+	    	if((GPIOA->IDR & GPIO_IDR_10 ) == 0){
+	    		break;
+	    	}
+	    	HAL_Delay(1000);
+	    	TIM2->PSC = (50 / i) - 1;
+    	　　}
 
+    	　　　TIM2->PSC = 9;
 	    while(1){
 	    	if((GPIOA->IDR & GPIO_IDR_10 ) == 0){
 	    		break;
@@ -335,6 +344,16 @@ void EXTI9_5_IRQHandler(void)
 
             TIM2->CCR1=5000;
 
+    　　　　for(i=2; i<4; i++){
+	    	if((GPIOA->IDR & GPIO_IDR_10 ) == 0){
+	    		break;
+	    	}
+	    	HAL_Delay(1000);
+	    	TIM2->PSC = (50 / i) - 1;
+    	　　}
+
+    	　　TIM2->PSC = 9;	  
+	  
 	    while(1){
 	    	if((GPIOA->IDR & GPIO_IDR_10 ) == 0){
 	    		break;
@@ -373,6 +392,16 @@ void EXTI9_5_IRQHandler(void)
 	    }
 
             TIM2->CCR1=5000;
+	  
+    　　　　for(i=2; i<4; i++){
+	    	if((GPIOA->IDR & GPIO_IDR_10 ) == 0){
+	    		break;
+	    	}
+	    	HAL_Delay(1000);
+	    	TIM2->PSC = (50 / i) - 1;
+    	　　}
+
+    	　　TIM2->PSC = 9;	  
 
 	    while(1){
 	    	if((GPIOA->IDR & GPIO_IDR_10 ) == 0){
