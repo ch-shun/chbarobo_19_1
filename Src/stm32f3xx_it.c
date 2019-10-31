@@ -213,8 +213,96 @@ void EXTI9_5_IRQHandler(void)
   /* USER CODE BEGIN EXTI9_5_IRQn 1 */
 
   if((EXTI->PR & EXTI_PR_PR5) != 0){
+   EXTI->PR |= EXTI_PR_PR5;
 
-	    EXTI->PR |= EXTI_PR_PR5;
+    //If PA12 Pin is high , into Auto section
+
+  	if((GPIOA->IDR & GPIO_IDR_12 ) != 0){
+  	    //Go???��?��??��?��?Straight
+
+	    GPIOB->BSRR = GPIO_BSRR_BS_1;
+	    GPIOB->BSRR = GPIO_BSRR_BR_0;
+
+        GPIOA->BSRR = GPIO_BSRR_BR_7;
+	    GPIOA->BSRR = GPIO_BSRR_BR_6;
+	    GPIOA->BSRR = GPIO_BSRR_BS_5;
+	    GPIOA->BSRR = GPIO_BSRR_BS_4;
+
+
+    	TIM2->CCR1=500;
+
+    	for(i=2; i<71; i++){
+	    	HAL_Delay(5);
+	    	TIM2->PSC = (700 / i);
+    	}
+
+    	TIM2->PSC = 9;
+
+    	HAL_Delay(1000);// go straight time
+
+    	TIM2->PSC = 699;
+		TIM2->CCR1=0;
+
+	    GPIOB->BSRR = GPIO_BSRR_BR_1;
+	    GPIOB->BSRR = GPIO_BSRR_BR_0;
+
+	    GPIOA->BSRR = GPIO_BSRR_BR_7;
+	    GPIOA->BSRR = GPIO_BSRR_BR_6;
+	    GPIOA->BSRR = GPIO_BSRR_BR_5;
+	    GPIOA->BSRR = GPIO_BSRR_BR_4;
+	    GPIOA->BSRR = GPIO_BSRR_BR_3;
+	    //end go straight
+
+	    //shot radition highest
+	    GPIOB->BSRR = GPIO_BSRR_BS_0;
+	    GPIOB->BSRR = GPIO_BSRR_BR_1;
+
+	    GPIOA->BSRR = GPIO_BSRR_BR_3;
+
+    	TIM2->CCR1=500;
+
+        HAL_Delay(3000); //rise time
+
+		TIM2->CCR1=0;
+
+	    //end set highest rad
+
+		//start set medium rad
+	    GPIOB->BSRR = GPIO_BSRR_BS_0;
+	    GPIOB->BSRR = GPIO_BSRR_BR_1;
+
+	    GPIOA->BSRR = GPIO_BSRR_BS_3;
+    	TIM2->CCR1=500;
+
+        HAL_Delay(1000); //down time
+
+		TIM2->CCR1=0;
+
+        //end down rad medium
+
+        //down rad lowest
+	    GPIOB->BSRR = GPIO_BSRR_BS_0;
+	    GPIOB->BSRR = GPIO_BSRR_BR_1;
+
+	    GPIOA->BSRR = GPIO_BSRR_BS_3;
+    	TIM2->CCR1=500;
+
+    	HAL_Delay(1000);
+
+		TIM2->CCR1=0;
+
+	    GPIOB->BSRR = GPIO_BSRR_BR_1;
+	    GPIOB->BSRR = GPIO_BSRR_BR_0;
+
+	    GPIOA->BSRR = GPIO_BSRR_BR_7;
+	    GPIOA->BSRR = GPIO_BSRR_BR_6;
+	    GPIOA->BSRR = GPIO_BSRR_BR_5;
+	    GPIOA->BSRR = GPIO_BSRR_BR_4;
+	    GPIOA->BSRR = GPIO_BSRR_BR_3;
+	    //end set lowest rad
+
+  	} else {
+
 
 	    GPIOB->BSRR = GPIO_BSRR_BS_0;
 	    GPIOB->BSRR = GPIO_BSRR_BR_1;
