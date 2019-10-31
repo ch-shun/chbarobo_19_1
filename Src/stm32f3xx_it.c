@@ -484,14 +484,14 @@ void EXTI9_5_IRQHandler(void)
 
 	    if((GPIOB->IDR & GPIO_IDR_4 ) != 0){
 		    GPIOA->BSRR = GPIO_BSRR_BR_7;
-		    GPIOA->BSRR = GPIO_BSRR_BS_6;
+		    GPIOA->BSRR = GPIO_BSRR_BR_6;
 		    GPIOA->BSRR = GPIO_BSRR_BS_5;
-		    GPIOA->BSRR = GPIO_BSRR_BR_4;
+		    GPIOA->BSRR = GPIO_BSRR_BS_4;
 	    } else {
 		    GPIOA->BSRR = GPIO_BSRR_BS_7;
-		    GPIOA->BSRR = GPIO_BSRR_BR_6;
+		    GPIOA->BSRR = GPIO_BSRR_BS_6;
 		    GPIOA->BSRR = GPIO_BSRR_BR_5;
-		    GPIOA->BSRR = GPIO_BSRR_BS_4;
+		    GPIOA->BSRR = GPIO_BSRR_BR_4;
 	    }
 
    	TIM2->CCR1=500;
