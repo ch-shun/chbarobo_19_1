@@ -261,9 +261,13 @@ void EXTI9_5_IRQHandler(void)
 	    GPIOA->BSRR = GPIO_BSRR_BR_3;
 
     	TIM2->CCR1=500;
-
-        HAL_Delay(3000); //rise time
-
+    	for(i=2; i<71; i++){
+	    	HAL_Delay(5);
+	    	TIM2->PSC = (700 / i);
+    	}
+    	TIM2->PSC = 9;
+    	HAL_Delay(3000);// rise time
+    	TIM2->PSC = 699;
 		TIM2->CCR1=0;
 
 	    //end set highest rad
@@ -274,9 +278,13 @@ void EXTI9_5_IRQHandler(void)
 
 	    GPIOA->BSRR = GPIO_BSRR_BS_3;
     	TIM2->CCR1=500;
-
-        HAL_Delay(1000); //down time
-
+    	for(i=2; i<71; i++){
+	    	HAL_Delay(5);
+	    	TIM2->PSC = (700 / i);
+    	}
+    	TIM2->PSC = 9;
+    	HAL_Delay(1000);// dowm medium time
+    	TIM2->PSC = 699;
 		TIM2->CCR1=0;
 
         //end down rad medium
@@ -287,9 +295,13 @@ void EXTI9_5_IRQHandler(void)
 
 	    GPIOA->BSRR = GPIO_BSRR_BS_3;
     	TIM2->CCR1=500;
-
-    	HAL_Delay(1000);
-
+    	for(i=2; i<71; i++){
+	    	HAL_Delay(5);
+	    	TIM2->PSC = (700 / i);
+    	}
+    	TIM2->PSC = 9;
+    	HAL_Delay(1000);// down lowest time
+    	TIM2->PSC = 699;
 		TIM2->CCR1=0;
 
 	    GPIOB->BSRR = GPIO_BSRR_BR_1;
@@ -383,7 +395,7 @@ void EXTI9_5_IRQHandler(void)
 	    	}
 	    }
 
-	  HAL_Delay(3000);
+	  HAL_Delay(3000); //spin time
 	  
     	TIM2->PSC = 699;
 		TIM2->CCR1=0;
