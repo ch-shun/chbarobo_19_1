@@ -363,7 +363,7 @@ void EXTI9_5_IRQHandler(void)
 	    GPIOB->BSRR = GPIO_BSRR_BS_1;
 	    GPIOB->BSRR = GPIO_BSRR_BR_0;
 
-	    if((GPIOB->IDR & GPIO_IDR_4 ) != 0){
+	    if((GPIOB->IDR & GPIO_IDR_4 ) == 0){
 
 		    GPIOA->BSRR = GPIO_BSRR_BR_7;
 		    GPIOA->BSRR = GPIO_BSRR_BR_6;
@@ -448,7 +448,7 @@ void EXTI9_5_IRQHandler(void)
 	    GPIOB->BSRR = GPIO_BSRR_BS_1;
 	    GPIOB->BSRR = GPIO_BSRR_BR_0;
 
-	    if((GPIOB->IDR & GPIO_IDR_4 ) != 0){
+	    if((GPIOB->IDR & GPIO_IDR_4 ) == 0){
 		    GPIOA->BSRR = GPIO_BSRR_BR_7;
 		    GPIOA->BSRR = GPIO_BSRR_BS_6;
 		    GPIOA->BSRR = GPIO_BSRR_BR_5;
@@ -499,7 +499,7 @@ void EXTI9_5_IRQHandler(void)
 	    GPIOB->BSRR = GPIO_BSRR_BS_1;
 	    GPIOB->BSRR = GPIO_BSRR_BR_0;
 
-	    if((GPIOB->IDR & GPIO_IDR_4 ) != 0){
+	    if((GPIOB->IDR & GPIO_IDR_4 ) == 0){
 		    GPIOA->BSRR = GPIO_BSRR_BR_7;
 		    GPIOA->BSRR = GPIO_BSRR_BR_6;
 		    GPIOA->BSRR = GPIO_BSRR_BS_5;
