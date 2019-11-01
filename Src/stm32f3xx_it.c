@@ -376,24 +376,25 @@ void EXTI9_5_IRQHandler(void)
 		    GPIOA->BSRR = GPIO_BSRR_BS_5;
 		    GPIOA->BSRR = GPIO_BSRR_BS_4;
 	    }
+	  
+	  
+	    while(1){
+	    	if((GPIOA->IDR & GPIO_IDR_10 ) != 0){
+	    		break;
+	    	}
+	    }
 
     	TIM2->CCR1=500;
 
     	for(i=2; i<71; i++){
-	    	if((GPIOA->IDR & GPIO_IDR_10 ) == 0){
+	    	if((GPIOA->IDR & GPIO_IDR_10 ) != 0){
 	    		break;
 	    	}
 	    	HAL_Delay(5);
 	    	TIM2->PSC = (700 / i);
     	}
 
-    	TIM2->PSC = 9;
-
-	    while(1){
-	    	if((GPIOA->IDR & GPIO_IDR_10 ) = 0){
-	    		break;
-	    	}
-	    }
+    	TIM2->PSC = 10;
 
 	  HAL_Delay(3000); //spin time
 	  
