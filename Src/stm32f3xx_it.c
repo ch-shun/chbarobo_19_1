@@ -212,11 +212,12 @@ void EXTI9_5_IRQHandler(void)
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_9);
   /* USER CODE BEGIN EXTI9_5_IRQn 1 */
 
+	
   if((EXTI->PR & EXTI_PR_PR5) != 0){
    EXTI->PR |= EXTI_PR_PR5;
 
     //If PA12 Pin is high , into Auto section
-
+/*
   	if((GPIOA->IDR & GPIO_IDR_12 ) != 0){
   	    //Go???��?��??��?��?Straight
 
@@ -302,7 +303,7 @@ void EXTI9_5_IRQHandler(void)
 	    //end set lowest rad
 
   	} else {
-
+*/
 
 	    GPIOB->BSRR = GPIO_BSRR_BS_0;
 	    GPIOB->BSRR = GPIO_BSRR_BR_1;
@@ -337,7 +338,8 @@ void EXTI9_5_IRQHandler(void)
 	    GPIOA->BSRR = GPIO_BSRR_BR_6;
 	    GPIOA->BSRR = GPIO_BSRR_BR_5;
 	    GPIOA->BSRR = GPIO_BSRR_BR_4;
-	    GPIOA->BSRR = GPIO_BSRR_BR_3;
+	    GPIOA->BSRR = GPIO_BSRR_BR_3; 
+//    }	  
 
   }
 
@@ -376,11 +378,13 @@ void EXTI9_5_IRQHandler(void)
     	TIM2->PSC = 9;
 
 	    while(1){
-	    	if((GPIOA->IDR & GPIO_IDR_10 ) == 0){
+	    	if((GPIOA->IDR & GPIO_IDR_10 ) = 0){
 	    		break;
 	    	}
 	    }
 
+	  HAL_Delay(3000);
+	  
     	TIM2->PSC = 699;
 		TIM2->CCR1=0;
 
